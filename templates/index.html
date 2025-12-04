@@ -3,7 +3,9 @@
 {% endblock %} {% block body %}
 <div class="content">
   <h1 style="text-align: center">To-Do System</h1>
-
+  {% if tasks|length < 1 %}
+  <h4>No task avalible. Create one!</h4>
+  {% else %}
   <table>
     <tr>
       <th>Task</th>
@@ -17,12 +19,12 @@
       <td>
         <a href="/delete/{{ task.id }}">Delete</a>
         <br />
-        <a href="">Update</a>
+        <a href="/update/{{ task.id }}">Update</a>
       </td>
     </tr>
     {% endfor %}
   </table>
-
+  {% endif %}
   <form action="/" method="POST">
     <input
       type="text"
