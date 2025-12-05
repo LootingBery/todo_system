@@ -12,7 +12,7 @@ class Todo(db.Model):
     date_created = db.Column(db.DateTime, default=datetime.now)
 
     def __repr__(self):
-        return f'<Task {self.id}>'
+        return f'<Todo {self.id}>'
 
 @app.route("/", methods=['POST' , 'GET'])
 def index():
@@ -25,7 +25,7 @@ def index():
             db.session.commit()
             return redirect('/')
         except:
-            return "There was an issue adding your task"
+            return "Error"
     else:
         tasks = Todo.query.order_by(Todo.date_created).all()
         return render_template('index.html', tasks=tasks)
@@ -39,7 +39,7 @@ def delete(id):
         db.session.commit()
         return redirect('/')
     except:
-        return 'There was a problem deleting that task'
+        return 'Error'
     
 @app.route('/update/<int:id>', methods=['GET', 'POST'])
 def update(id):
@@ -52,7 +52,7 @@ def update(id):
             db.session.commit()
             return redirect("/")
         except:
-            return "There was a problem updating the task"
+            return "Error"
     else:   
         return render_template('update.html', task=task)
     
