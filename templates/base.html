@@ -8,6 +8,11 @@
       href="{{ url_for('static', filename='style.css') }}"
     />
     <title>{% block title %}To-Do system{% endblock %}</title>
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="{{ url_for('static', filename='spongebob-icon.ico') }}"
+    />
     {% block head %}{% endblock %}
   </head>
   <body>
