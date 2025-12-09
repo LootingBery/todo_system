@@ -45,10 +45,15 @@
   </div>
   {% endif %}
 
-  <form method="POST">
-    <input type="text" name="content" placeholder="Enter a new task" required />
-    <input type="datetime-local" name="deadline" />
-    <input class="submit" type="submit" value="Add Task" />
-  </form>
+  <div class="form">
+    <form method="POST">
+      <input type="text" name="content" required="true" />
+      <label class="label" for="task" id="label-task">
+        <div class="text">Task</div>
+      </label>
+      <input type="datetime-local" name="deadline" />
+      <input class="submit" type="submit" value="Add Task" />
+    </form>
+  </div>
 </div>
 {% endblock %}
