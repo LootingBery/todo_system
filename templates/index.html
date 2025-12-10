@@ -5,7 +5,7 @@
   <h1 style="text-align: center; color: white">To-Do System</h1>
 
   {% if tasks|length < 1 %}
-  <h4 style="color: white">No tasks. Create one!</h4>
+  <h4 style="color: white; text-align: center">No tasks. Create one!</h4>
   {% else %}
   <div class="tableContainer">
     <table>
@@ -31,13 +31,6 @@
           >
             Delete
           </button>
-          <br />
-          <button
-            class="update"
-            onclick="location.href='/update/{{ task.id }}'"
-          >
-            Update
-          </button>
         </td>
       </tr>
       {% endfor %}
@@ -47,11 +40,18 @@
 
   <div class="form">
     <form method="POST">
-      <input type="text" name="content" required="true" />
-      <label class="label" for="task" id="label-task">
-        <div class="text">Task</div>
-      </label>
+      <input
+        type="text"
+        name="content"
+        required="true"
+        placeholder="Add a task"
+        autocomplete="off"
+      />
+      <br />
+      <br />
       <input type="datetime-local" name="deadline" />
+      <br />
+      <br />
       <input class="submit" type="submit" value="Add Task" />
     </form>
   </div>

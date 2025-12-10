@@ -59,22 +59,6 @@ def delete(id):
     return redirect("/")
 
 
-@app.route("/update/<int:id>", methods=["GET", "POST"])
-def update(id):
-    task = Todo.query.get_or_404(id)
-
-    if request.method == "POST":
-        task.content = request.form["content"]
-        deadline_raw = request.form.get("deadline")
-        task.deadline = (
-            datetime.fromisoformat(deadline_raw)
-            if deadline_raw else None
-        )
-
-        db.session.commit()
-        return redirect("/")
-
-    return render_template("update.html", task=task)
 
 
 if __name__ == "__main__":
